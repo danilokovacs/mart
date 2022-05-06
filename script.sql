@@ -36,7 +36,7 @@ CONSTRAINT chk_status CHECK (status = 'ativo' OR status = 'inativo' OR status = 
 CREATE TABLE Componente (
 idComponente INT PRIMARY KEY AUTO_INCREMENT,
 tipo VARCHAR(45),
-modelo VARCHAR(45),
+modelo VARCHAR(200),
 fkTotem INT
 );
 
@@ -54,14 +54,25 @@ unidadeMedida VARCHAR(45)
 );
 
 INSERT INTO Empresa (cnpj,nome,email,senha,cep,logradouro,bairro,numero,imagem) VALUES 
-('34328194000170','McDonalds','mc_jardins@mcdonalds.com.br','mc@@2001','91110000','AV. ASSIS BRASIL','JARDINS',4320,'https://www.019agora.com.br/wp-content/uploads/2019/12/loja-mcd.jpg'),
-('21248062000197','Burger King','bk_sl@burguerking.com.br','burgerking','31270672','AV PRESIDENTE ANTONIO CARLOS','SÃO LUIZ','7808','https://www.saboravida.com.br/wp-content/uploads/2020/12/burger-king-inaugura-em-sp-restaurante-idealizado-pelos-consumidores-1.jpg'),
-('92215100000153','KFC','kfc_sa@kfc.com.br','kfc','04576000','AVENIDA JORNALISTA ROBERTO MARINHO','CIDADE MONCOES',2050,'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/kfc-open-thanksgiving-1637539246.jpg');
+('34328194000170','McDonalds','mc_jardins@mcdonalds.com.br','mcdonalds','91110000','AV. ASSIS BRASIL','JARDINS',4320,'https://www.019agora.com.br/wp-content/uploads/2019/12/loja-mcd.jpg'),
+('21248062000197','Burger King','bk_saoluiz@burgerking.com.br','burgerking','31270672','AV PRESIDENTE ANTONIO CARLOS','SÃO LUIZ','7808','https://www.saboravida.com.br/wp-content/uploads/2020/12/burger-king-inaugura-em-sp-restaurante-idealizado-pelos-consumidores-1.jpg'),
+('92215100000153','KFC','kfc_moncoes@kfc.com.br','kfc','04576000','AVENIDA JORNALISTA ROBERTO MARINHO','CIDADE MONCOES',2050,'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/kfc-open-thanksgiving-1637539246.jpg');
 
 INSERT INTO Funcionario (nome, email, senha, fkEmpresa) VALUES
-('João Silva','joao_silva@mcdonalds.com.br','josilva@@',1),
-('Carmen Julia','carmen_lucia@burguerking.com.br','c#$mrmenlucai',2),
-('Maria Ribeiro','maria.ribeiro@kfc.com.br','marRibramIr454b',3);
+('João Silva','joao_silva@mcdonalds.com.br','joao',1),
+('Carmen Julia','carmen_lucia@burguerking.com.br','carmen',2),
+('Maria Ribeiro','maria_ribeiro@kfc.com.br','maria',3);
+
+-- FUNCIONARIOS MART
+INSERT INTO Empresa (cnpj,nome,email,senha,cep,logradouro,bairro,numero,imagem) VALUES
+('14785236932587','MarT','mart@mart.com.br','mart','01414001','Rua Haddock Lobo','Cerqueira César','595','https://i.imgur.com/XhQWbY3.png');
+
+INSERT INTO Funcionario (nome, email, senha, fkEmpresa) VALUES
+('Ana Marques','ana@mart.com.br','ana',4),
+('Danilo Kovacs','danilo@mart.com.br','danilo',4),
+('Pedro Fontes','pedro@mart.com.br','pedro',4),
+('Nickolas Junior','nickolas@mart.com.br','nickolas',4),
+('Guilherme Silva','guilherme@mart.com.br','guilherme',4);
 
 INSERT INTO Totem (hostname,local,status,fkEmpresa) VALUES
 ('mc-totem-1','1 ANDAR A1','ativo',1),
@@ -114,81 +125,47 @@ INSERT INTO Componente (tipo,modelo,fkTotem) VALUES
 ('SISTEMA','Windows',9);
 
 INSERT INTO Historico (fkComponente,medicao, fkUnidadeMedida) VALUES
-(1,'50', 1), -- INICIO PROCESSADOR TEMP
-(2,'55', 1),
+(1,'29', 1), -- INICIO PROCESSADOR PORCENTAGEM
+(2,'30', 1),
 (3,'0', 1),--
-(4,'50', 1),
-(5,'48', 1),
-(6,'60', 1),
-(7,'80', 1),
-(8,'62', 1),
-(9,'0', 1), -- FIM PROCESSADOR TEMP
-(1,'29', 2), -- INICIO PROCESSADOR PORCENTAGEM
-(2,'30', 2),
-(3,'0', 2),--
-(4,'20', 2),
-(5,'15', 2),
-(6,'32', 2),
-(7,'75', 2),
-(8,'22', 2),
-(9,'0', 2), -- FIM PROCESSADOR PORCENTAGEM
-(10,'43', 2), -- INICIO DISCO
-(11,'82', 2),
-(12,'0', 2),
-(13,'54', 2),
-(14,'96', 2),
-(15,'15', 2),
-(16,'22', 2),
-(17,'39', 2),
-(18,'0', 2), -- FIM DISCO
-(19,'9.6', 2), -- INICIO MEMORIA
-(20,'35', 2),
-(21,'0', 2),--
-(22,'89', 2),
-(23,'27', 2),
-(24,'12', 2),
-(25,'45', 2),
-(26,'62', 2),
-(27,'0', 2),
-(28,'0', 2), -- FIM MEMORIA
-(29,'3 days, 06:56:03', 3), -- INICIO SISTEMA TEMPO
-(30,'2 days, 04:00:00', 3),
-(31,'0 days, 00:00:00', 3), --
-(32,'0 days, 16:05;37', 3),
-(33,'4 days, 02:27:00', 3),
-(34,'3 days, 01:07:41', 3),
-(35,'2 days, 14:13:21', 3),
-(36,'1 day, 02:07:32', 3),
-(37,'0 days, 00:00:00', 3); -- FIM SISTEMA TEMPO
-
-INSERT INTO Empresa (cnpj,nome,email,senha,cep,logradouro,bairro,numero,imagem) VALUES
-('14785236932587','MarT','mart@mart.com.br','m@rt','01414001','Rua Haddock Lobo','Cerqueira César','595','https://i.imgur.com/XhQWbY3.png');
-
-INSERT INTO Funcionario (nome, email, senha, fkEmpresa) VALUES
-('Ana Marques','ana@mart.com.br','ana_m@rt',4),
-('Danilo Martins','danilo@mart.com.br','danilo_m@rt',4),
-('Pedro Fontes','pedro@mart.com.br','pedro_m@rt',4),
-('Nickolas Junior','nickolas@mart.com.br','nickolas_m@rt',4),
-('Guilherme Silva','guilherme@mart.com.br','guilherme_m@rt',4);
+(4,'20', 1),
+(5,'15', 1),
+(6,'32', 1),
+(7,'75', 1),
+(8,'22', 1),
+(9,'0', 1), -- FIM PROCESSADOR PORCENTAGEM
+(10,'43', 1), -- INICIO DISCO
+(11,'82', 1),
+(12,'0', 1),
+(13,'54', 1),
+(14,'96', 1),
+(15,'15', 1),
+(16,'22', 1),
+(17,'39', 1),
+(18,'0', 1), -- FIM DISCO
+(19,'9.6', 1), -- INICIO MEMORIA
+(20,'35', 1),
+(21,'0', 1),--
+(22,'89', 1),
+(23,'27', 1),
+(24,'12', 1),
+(25,'45', 1),
+(26,'62', 1),
+(27,'0', 1),
+(28,'0', 1), -- FIM MEMORIA
+(29,'3 days, 06:56:03', 2), -- INICIO SISTEMA TEMPO
+(30,'2 days, 04:00:00', 2),
+(31,'0 days, 00:00:00', 2), --
+(32,'0 days, 16:05;37', 2),
+(33,'4 days, 02:27:00', 2),
+(34,'3 days, 01:07:41', 2),
+(35,'2 days, 14:13:21', 2),
+(36,'1 day, 02:07:32', 2),
+(37,'0 days, 00:00:00', 2); -- FIM SISTEMA TEMPO
 
 INSERT INTO UnidadeMedida (unidadeMedida) VALUES
-('°C'),
 ('%'),
-('tempo');
-
-ALTER TABLE Funcionario ADD FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa);
-ALTER TABLE Totem ADD FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa);
-ALTER TABLE Componente ADD FOREIGN KEY (fkTotem) REFERENCES Totem(idTotem);
-ALTER TABLE Historico ADD FOREIGN KEY (fkComponente) REFERENCES Componente(idComponente);
-ALTER TABLE Historico ADD FOREIGN KEY (fkUnidadeMedida) REFERENCES UnidadeMedida (idUnidadeMedida);
-
-SELECT * FROM Empresa;
-SELECT * FROM Funcionario;
-SELECT * FROM Totem;
-SELECT * FROM Componente;
-SELECT * FROM Historico;
-SELECT * FROM UnidadeMedida;
-
+('H');
 
 INSERT INTO Empresa (cnpj,nome,email,senha,cep,logradouro,bairro,numero,imagem) VALUES 
 ('41214523695412','McDonalds','mc_itamarati@mcdonalds.com.br','mc@@2001','13568781','RUA AUGUSTO MARIA PATRIZZI','RESIDENCIAL ITAMARATI',625,'https://www.hypeness.com.br/1/2021/05/8a2f7118-mcdonalds-azul.jpeg'),
@@ -204,3 +181,10 @@ INSERT INTO Totem (hostname,local,status,fkEmpresa) VALUES
 ('bk-totem-6','1 ANDAR A3','ativo',6),
 ('kfc-totem-3','1 ANDAR A1','ativo',7),
 ('kfc-totem-4','1 ANDAR A2','inativo',7);
+
+-- ADIÇÃO DE ON DELETE CASCADE PARA QUE OS REGISTROS ATRELADOS A FK TAMBÉM SERÃO EXCLUÍDOS
+ALTER TABLE Funcionario ADD FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa);
+ALTER TABLE Totem ADD FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa) ON DELETE CASCADE;
+ALTER TABLE Componente ADD FOREIGN KEY (fkTotem) REFERENCES Totem(idTotem) ON DELETE CASCADE;
+ALTER TABLE Historico ADD FOREIGN KEY (fkComponente) REFERENCES Componente(idComponente) ON DELETE CASCADE;
+ALTER TABLE Historico ADD FOREIGN KEY (fkUnidadeMedida) REFERENCES UnidadeMedida (idUnidadeMedida) ON DELETE CASCADE;
