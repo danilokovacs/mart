@@ -44,7 +44,6 @@ versaojava="$(java -version 2>&1 | grep version | cut -d " " -f2)"
 if [ "${versaojava}" ] ; then
 sleep 2
     echo "Cliente possui java instalado"
-    cd Desktop
     if [[ -f ./projeto-mart-gui.jar ]]
     then
     sleep 2
@@ -56,7 +55,6 @@ sleep 2
     fi
 else
     echo "Cliente nao possui java instalado"
-        cd Desktop
         if [[ -f ./projeto-mart-gui.jar ]]
         then
             echo "Aplicação já esta baixada"
@@ -67,6 +65,5 @@ else
             cd
             echo "Instalando java 11"
             sudo apt install openjdk-11-jre -y
-            cd Desktop
         fi
 fi
