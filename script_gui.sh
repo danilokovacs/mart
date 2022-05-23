@@ -26,7 +26,7 @@ sleep 2
 #Script para instalação do docker##
 ###################################
 echo "Instalando docker"
-sudo apt install docker.io
+sudo apt install docker.io -y
 echo "Iniciando docker"
 sudo systemctl start docker
 echo "Habilitando docker"
