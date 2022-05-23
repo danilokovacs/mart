@@ -54,8 +54,6 @@ sleep 2
         wget -O projeto-mart-gui.jar https://github.com/danilokovacs/mart/raw/main/projeto-mart-gui.jar
         echo "Aplicação baixada"
     fi
-    echo "Executando a aplicação"
-        java -jar projeto-mart-gui.jar
 else
     echo "Cliente nao possui java instalado"
         cd Desktop
@@ -70,7 +68,5 @@ else
             echo "Instalando java 11"
             sudo apt install openjdk-11-jre -y
             cd Desktop
-            echo "Executando a aplicação"
-            java -jar projeto-mart-gui.jar
         fi
 fi
