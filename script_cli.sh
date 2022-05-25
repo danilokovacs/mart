@@ -63,6 +63,6 @@ echo "Realize a criação das tabelas no container de BD"
 sleep 2
 echo "Após isso..."
 sleep 2
-echo "Executar sudo docker run --name mart-cli -it <id docker>"
+echo "Executar sudo docker run --name mart-cli -it <id do docker image mart:1.0 criado>"
 echo "sudo docker start mart-cli"
 echo "sudo docker exec -it mart-cli bash"
